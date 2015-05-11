@@ -11,7 +11,7 @@ import 'styles/GoogleMap.scss';
 var GoogleMap = React.createClass({
 
 	onDragEnd() {
-		console.log(`onDragEnd ${JSON.stringify(this.map.getCenter())}`);
+		console.log(`[Google Map] onDragEnd ${JSON.stringify(this.map.getCenter())}`);
 		var center = {
 			lat: this.map.getCenter().lat(),
 			lng: this.map.getCenter().lng(),
@@ -21,14 +21,14 @@ var GoogleMap = React.createClass({
 
 	onZoomChanged() {
 		var zoom = this.map.getZoom();
-		console.log(`onZoomChanged ${JSON.stringify(zoom)}`);
+		console.log(`[Google Map] onZoomChanged ${JSON.stringify(zoom)}`);
 		actions.changeZoom(zoom);
 	},
 
 	componentDidMount() {
 		let center = this.props.center;
 		let zoom = this.props.zoom;
-		console.log(`componentDidMount: ${center.lat} ${center.lng}`);
+		console.log(`[Google Map] componentDidMount: ${center.lat} ${center.lng}`);
 
 		var mapCanvas = this.getDOMNode();
     var mapOptions = {
@@ -46,7 +46,7 @@ var GoogleMap = React.createClass({
 	shouldComponentUpdate(nextProps, nextState) {
 		var center = nextProps.center;
 		var zoom = nextProps.zoom;
-		console.log(`shouldComponentUpdate nextProps ${JSON.stringify(nextProps)} center ${center.lat}:${center.lng}`);
+		console.log(`[Google Map] shouldComponentUpdate nextProps ${JSON.stringify(nextProps)} center ${center.lat}:${center.lng}`);
 		this.map.panTo(center);
 		this.map.setZoom(zoom);
 		return false;

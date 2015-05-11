@@ -17,6 +17,13 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: pkgConfig,
 
+    'gh-pages': {
+      options: {
+        base: 'dist'
+      },
+      src: ['**']
+    },
+  
     webpack: {
       options: webpackDistConfig,
       dist: {
